@@ -6,6 +6,6 @@ const userSchema = new Schema({
    password: {type:String, required: true},
    email:{type:String, required: true},
    time: {type: Date, default: Date.now}
-}, {collection:'user'})
+})
 
 export default model('user', userSchema, 'user')
