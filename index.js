@@ -10,7 +10,7 @@ import './db/mongoose.js'
 
 const app = express();
 const port = process.env.PORT || 3001;
-const CORSoption = { origin: process.env.ORIGIN || "http://locahost:3000" };
+const CORSoption = { origin: process.env.ORIGIN || "http://localhost:3000" };
 
 app.use(cors(CORSoption));
 app.use(express.json());

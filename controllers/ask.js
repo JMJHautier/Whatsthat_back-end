@@ -17,7 +17,16 @@ export const getSingleAsk = async (req, res)=> {
 }
 
 export const createAsk = async (req, res)=> {
-   
+   try {
+      const {body, language, whatsthat} = req.body
+      const newAsk = await ask.create({
+         body,
+         language,
+         whatsthat      })
+      res.status(201).json(newAsk);
+   } catch(error) {
+      res.status(500).json({error:error.message})
+   }
 
 }
 
