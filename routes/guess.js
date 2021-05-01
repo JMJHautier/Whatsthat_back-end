@@ -4,7 +4,8 @@ import {
    getSingleGuess,
    createGuess,
    updateGuess, 
-   deleteGuess
+   deleteGuess,
+   getGuessesByAsk
 } from '../controllers/guess.js';
 
 
@@ -15,5 +16,5 @@ guess.get('/:id', getSingleGuess);
 guess.post('/', createGuess);
 guess.put('/', updateGuess); 
 guess.delete('/', deleteGuess);
-
+guess.get('/ask/:id', getGuessesByAsk)
 export default guess;
