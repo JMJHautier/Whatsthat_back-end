@@ -15,7 +15,6 @@ export const getSingleAsk = async (req, res)=> {
       else { res.json(singleAsk)};
    } catch (error) {{error: error.message}}
 }
-
 export const createAsk = async (req, res)=> {
    try {
       const {body, language, whatsthat} = req.body

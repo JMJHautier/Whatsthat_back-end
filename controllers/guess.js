@@ -31,6 +31,33 @@ export const deleteGuess = async (req, res) => {
 }
 
 export const updateGuess = async (req, res) => {
+   try {
+      const {id} = req.params
+      const {body, source, comment, rating_positive, rating_negative} = req.body;
+      if(rating_positive) {
+         const updatedGuess = await guess.findOneAndUpdate(
+            {_id:id},
+            {$inc:{rating_positive:1}},
+            {new:true})
+         res.json(updatedGuess)
+      }
+      else if(rating_negative) {
+         const updatedGuess = await guess.findOneAndUpdate(
+            {_id:id}, 
+            {$inc:{rating_negative:1}},
+            {new:true})
+         res.json(updatedGuess)
+      }
+      else
+      {
+      const updatedGuess= await guess.findOneAndUpdate(
+         {_id:id},
+         {body, source, comment, rating_positive, rating_negative},
+         {new:true}
+      );
+      res.json(updatedGuess);
+      }
+   }catch(error){res.status(500).json({error:error.message})}
    
 }
 

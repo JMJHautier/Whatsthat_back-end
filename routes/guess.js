@@ -14,7 +14,7 @@ const guess = express.Router();
 guess.get('/', getAllGuesses);
 guess.get('/:id', getSingleGuess); 
 guess.post('/', createGuess);
-guess.put('/', updateGuess); 
+guess.put('/:id', updateGuess); 
 guess.delete('/', deleteGuess);
 guess.get('/ask/:id', getGuessesByAsk)
 export default guess;
