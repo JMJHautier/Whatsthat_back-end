@@ -8,6 +8,7 @@ language: {type:String, required:false},
 author_id: {type:Schema.Types.ObjectId, ref:"user"},
 alert: {type: Boolean, default: false, required: false},
 comment: {type: String, required: false},
+guess: [{type:Schema.Types.ObjectId, ref:'guess'}],
 time: {type: Date, default: Date.now}
 
 })

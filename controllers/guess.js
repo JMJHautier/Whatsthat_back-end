@@ -1,9 +1,10 @@
 import guess from '../models/guess.js';
-import mongoose from 'mongoose'
+import ask from '../models/ask.js'
 export const getAllGuesses = async (req, res) => {
+   try {
    const allGuess = await guess.find().populate('ask')
    res.json(allGuess);
-
+   } catch(error) {res.status(500).json({error:error.message})}
 }
 
 export const getSingleGuess = async (req, res) => {
@@ -19,8 +20,11 @@ export const createGuess = async (req, res) => {
          comment,
          ask_id
       })
-      
-      res.status(201).json(newGuess);
+      const updateAsk = await ask.findOneAndUpdate({
+         _id: ask_id},
+         {$push: {guess: newGuess["_id"]}},
+         {new:true})
+      res.status(201).json({newGuess: newGuess, updatedAsk: updateAsk});
    } catch(error) {
       res.status(500).json({error:error.message})
    }
