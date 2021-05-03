@@ -4,6 +4,7 @@ import cors from 'cors';
 import userRouter from './routes/user.js';
 import askRouter from './routes/ask.js'; 
 import guessRouter from './routes/guess.js';
+import authRouter from './routes/auth.js';
 
 import 'dotenv/config.js';
 import './db/mongoose.js'
@@ -20,4 +21,5 @@ app.use(morgan('dev'));
 app.use('/user', userRouter); 
 app.use('/ask', askRouter);
 app.use('/guess', guessRouter);
+app.use('/auth', authRouter);
 app.listen(port, () => console.log(`Listening on port ${port}`))
