@@ -6,7 +6,8 @@ const verifyToken = async  (req, res, next) => {
    console.log(token); 
    if(!token) throw new Error('Unauthorized')
    const {_id}= jwt.verify(token, process.env.JWT_SECRET )
-   const foundUser = await user.findOne({_id})
+   const foundUser = await user.findById(_id)
+   console.log(foundUser);
    if(!foundUser) throw new Error ('User does not exist')
    req.user = foundUser
    next();
