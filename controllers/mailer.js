@@ -2,18 +2,17 @@ import nodemailer from "nodemailer"
 import user from "../models/user.js"
 import ask from "../models/ask.js"
 import 'dotenv/config.js';
+import nodemailermailguntransport from 'nodemailer-mailgun-transport';
 
+const auth = {
+  auth: {
+    api_key: 'key-13fd560150b2f10971f19c6dccc1b9f6-2a9a428a-a9d49f54',
+    domain: 'sandbox113eca2185224408a92d493e8ae25c9b.mailgun.org'
+
+  }
+}
   // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      type: "login",
-      user: process.env.USER_EMAIL, 
-      pass: process.env.PASS_EMAIL 
-    },
-  });
+  let transporter = nodemailer.createTransport(nodemailermailguntransport(auth));
 
 export const sendNotification = async (req, res) => {
    try{
