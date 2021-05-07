@@ -1,4 +1,7 @@
 {
+  "engine": {
+    "node": "14.16.0"
+  },
   "name": "whatsthat-back",
   "version": "1.0.0",
   "description": "Back end of the What's that app",
