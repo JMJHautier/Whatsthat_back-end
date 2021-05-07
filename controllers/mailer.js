@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer"
 import user from "../models/user.js"
 import ask from "../models/ask.js"
-import 'dotenv/config.js';
+// import 'dotenv/config.js';
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({

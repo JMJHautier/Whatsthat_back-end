@@ -7,8 +7,8 @@ import guessRouter from './routes/guess.js';
 import authRouter from './routes/auth.js';
 import mailRouter from './routes/mailer.js'
 
-import 'dotenv/config.js';
-import './db/mongoose.js'
+import 'dotenv/config.js'
+import './db/mongoose.js';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -24,4 +24,4 @@ app.use('/ask', askRouter);
 app.use('/guess', guessRouter);
 app.use('/auth', authRouter);
 app.use('/mailer', mailRouter);
-app.listen(port, () => console.log(`Listening on port ${port}`))
+app.listen(port, () => console.log(`Listening on the port ${port}`))
