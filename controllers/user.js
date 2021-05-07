@@ -4,10 +4,13 @@ import user from "../models/user.js"
 export const getAllUsers = async (req, res) => {
    try {
       const users = await user.find(); 
+      console.log(process.env.USER_MAIL) 
+      console.log(process.env.PASS_MAIL)
       res.json(users); 
    }
    catch(error) {res.status(500).json({error: error.message});
 }
+
 }
 
 export const getSingleUser = async (req, res) => {
@@ -38,6 +41,7 @@ export const updateUser = async (req, res) => {
    const {id, type} = req.params;
    const {username, password, email, alert} = req.body;
    let updatedUser;
+
    try {
       if(type==="addalert") {
          updatedUser = await user.findOneAndUpdate(
