@@ -44,8 +44,8 @@ export const createGuess = async (req, res) => {
               'Content-Type': 'application/json'
             }
           }
-      const sendMail = await nodefetch(`${serverLink}/mailer/notify/${req.body.ask}`, options)
-      const confirmation = console.log(sendMail)
+      // const sendMail = await nodefetch(`${serverLink}/mailer/notify/${req.body.ask}`, options)
+      // const confirmation = console.log(sendMail)
       res.status(201).json({newGuess: newGuess, updatedAsk: updateAsk});
          
    } catch(error) {
