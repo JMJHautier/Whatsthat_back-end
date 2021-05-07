@@ -18,7 +18,7 @@ app.use(cors(CORSoption));
 app.use(express.json());
 app.use(morgan('dev'));
 
-
+app.route('/').get((req, res) =>{res.send('hello')})
 app.use('/user', userRouter); 
 app.use('/ask', askRouter);
 app.use('/guess', guessRouter);
