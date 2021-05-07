@@ -14,6 +14,6 @@ ask.get('/', getAllAsks);
 ask.get('/:id', getSingleAsk);
 ask.get('/guess/:body', getAskByGuess)
 ask.post('/', createAsk);
-ask.put('/:id', updateAsk);
+ask.put('/:type/:id', updateAsk);
 
 export default ask;

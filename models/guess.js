@@ -3,14 +3,13 @@ const {Schema, model} = mongoose;
 
 const guessSchema = new Schema ({
    body:{type:String, required:true},
-   source:{type:String, required:true},
-   ask_id:{type:Schema.Types.ObjectId, required:true, ref:"ask"},
+   source:{type:String, required:false},
+   ask:{type:Schema.Types.ObjectId, required:true, ref:"ask"},
    comment:{type:String, required:false},
-   alert: {type:Boolean, required:false, default:false},
-   author_id: {type:Schema.Types.ObjectId, ref:"user"},
+   author: {type:Schema.Types.ObjectId, ref:"user"},
    rating_positive: {type:Number, default:0},
    rating_negative: {type:Number, default:0},
-   verified: {type:Boolean, required:false, default:false}
+   isVerified:{type:Boolean, required:true, default:false}
 })
 
 export default model("guess", guessSchema, "guess"); 

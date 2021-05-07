@@ -5,10 +5,10 @@ const askSchema = new Schema ({
 body: {type: String, required: true},
 whatsthat: {type:String, required: true},
 language: {type:String, required:false},
-author_id: {type:Schema.Types.ObjectId, ref:"user"},
-alert: {type: Boolean, default: false, required: false},
+author: {type:Schema.Types.ObjectId, required:true, ref:"user"},
+alert: [{type:Schema.Types.ObjectId, ref:"author"}],
 comment: {type: String, required: false},
-guess: [{type:Schema.Types.ObjectId, ref:'guess'}],
+guess: [{type:Schema.Types.ObjectId,ref:'guess'}],
 time: {type: Date, default: Date.now}
 
 })

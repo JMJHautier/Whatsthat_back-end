@@ -1,3 +1,4 @@
+import ask from "../models/ask.js";
 import user from "../models/user.js"
 
 export const getAllUsers = async (req, res) => {
@@ -34,16 +35,41 @@ export const createUser = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
+   const {id, type} = req.params;
+   const {username, password, email, alert} = req.body;
+   let updatedUser;
    try {
-      const {id} = req.params; 
-      const {username, password, email} = req.body;
-      const updatedUser = await user.findOneAndUpdate(
-         {_id: id},
-         {username, password, email},
-         {new: true}
-      );
-      res.json(updatedUser);
-   }
+      if(type==="addalert") {
+         updatedUser = await user.findOneAndUpdate(
+            {_id: id},
+            {$push: {alert: alert}},
+            {new: true})
+
+         updateAsk = await ask.findOneAndUpdate(
+            {_id: alert}, 
+            {$push: {alert: id}},
+            {new: true})
+         
+      }
+      else if(type==="removealert") {
+         updatedUser = await user.findOneAndUpdate(
+            {_id: id},
+            {$pull: {alert:{$in:[alert]}}},
+            {new: true}) 
+         updateAsk = await ask.findOneAndUpdate(
+            {_id: alert}, 
+            {$pull: {alert: id}},
+            {new: true})
+      }
+      else {
+         const updatedUser = await user.findOneAndUpdate(
+            {_id: id},
+            {username, password, email},
+            {new: true}
+         );
+         }
+   res.json(updatedUser);
+      }
    catch(error) {res.status(500).json({error: error.message})
                   }
 
