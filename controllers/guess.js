@@ -35,7 +35,7 @@ export const createGuess = async (req, res) => {
          hyperlink: "I am an hyperlink"
       }
       console.log(mailInfo)
-      const serverLink = process.env.ORIGIN || "http://localhost:3001";
+      const serverLink = process.env.ORIGIN_FRONT || "http://localhost:3001";
       
       const options = {
             method: 'POST',
