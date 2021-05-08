@@ -20,11 +20,10 @@ export const sendNotification = async (req, res) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user:"jhautier@hotmail.fr", // generated ethereal user
-      pass:"NBJVvCDL51aqr0O7", // generated ethereal password
+      user:process.env.USER_EMAIL, 
+      pass:process.env.PASS_EMAIL, 
     },
   });
-  //  try{
  
    const {id} = req.params
    const {userid, hyperlink} = req.body
@@ -38,11 +37,10 @@ export const sendNotification = async (req, res) => {
    let info = await transporter.sendMail({
     from: '"Whats that" <jhautier@hotmail.fr>', // sender address
     to: email, // list of receivers
-    subject: `Hello ${username}`, // Subject line
+    subject: `Whatsthat Alert! `, // Subject line
     
-    html: `<b>Your question about $${whatsthat} has received a new answer! Check it out at <a href=${hyperlink}> ${hyperlink}</b>`, // html body
+    html: `Dear ${username}, <br /> <b>Your question about $${whatsthat} has received a new answer! Check it out at <a href=${hyperlink}> ${hyperlink}</b>. If you no longer want to receive those messages, please unregister from your userprofile: <a href="https://whatsthat.netlify.app/user">Go to my user Profile</a>`, // html body
   });
-  // }catch(error) {res.status(500).json({error:error.message})}
 
   console.log("Message sent: %s", info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
