@@ -37,9 +37,10 @@ export const sendNotification = async (req, res) => {
    let info = await transporter.sendMail({
     from: `"What's that" <jhautier@hotmail.fr>`, // sender address
     to: email, // list of receivers
-    subject: `Whatsthat Alert! `, // Subject line
+    subject: `What's that Alert! `, // Subject line
     
-    html: `Dear ${username}, <br /> <b>Your question about ${whatsthat} has received a new answer! Check it out at <a href="https://whatsthat.netlify.app/guess/${id}"> https://whatsthat.netlify.app/guess/${id}</a></b>. If you no longer want to receive those messages, please  <a href="https://whatsthat.netlify.app/user">Go to your user Profile</a> and unregister. <br /> Kind regards, <br/> Your What's that team`, // html body
+    html: `Dear ${username}, <br /> <br /> <br>Your question about ${whatsthat} has received a new answer! Check it out at <a href="https://whatsthat.netlify.app/guess/${id}"> https://whatsthat.netlify.app/guess/${id}</a></br>. <br /> 
+    If you no longer want to receive those messages, please  <a href="https://whatsthat.netlify.app/user">go to your user Profile</a> and unregister. <br /> <br /> Kind regards, <br/> Your What's that team`, // html body
   });
 
   console.log("Message sent: %s", info.messageId);
