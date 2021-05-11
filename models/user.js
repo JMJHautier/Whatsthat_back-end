@@ -9,6 +9,7 @@ const userSchema = new Schema({
    ask:[{type:Schema.Types.ObjectId, ref:"ask"}],
    guess:[{type:Schema.Types.ObjectId, ref:"guess"}],
    alert:[{type:Schema.Types.ObjectId, ref:"ask"}],
+   admin:{type:Boolean, required:false},
    time: {type: Date, default: Date.now}
    }
 )
