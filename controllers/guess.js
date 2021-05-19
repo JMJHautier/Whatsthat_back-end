@@ -4,7 +4,7 @@ import nodefetch from "node-fetch";
 
 export const getAllGuesses = async (req, res) => {
    try {
-   const allGuess = await guess.find().populate('ask')
+   const allGuess = await guess.find().populate('ask, author')
    res.json(allGuess);
    } catch(error) {res.status(500).json({error:error.message})}
 }
@@ -99,7 +99,7 @@ export const getGuessesByAsk = async(req, res) => {
    try {
    const {id} = req.params;
    console.log(id);
-   const guessByAsk = await guess.find({ask: id})
+   const guessByAsk = await guess.find({ask: id}).populate('author')
    if(!guessByAsk){res.status(404).json({message: `No Submission with id ${id}`})}
    else {res.json(guessByAsk)}
    }catch(error) {
